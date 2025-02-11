@@ -21,9 +21,9 @@ ifndef MONITOR_BAUD_RATE
 MONITOR_BAUD_RATE = 115200
 endif
 
-compile : ${COMPILE_TIMESTAMP}
+compile : ${COMPILE_TIMESTAMP} display_config
 
-upload : ${COMPILE_TIMESTAMP}
+upload : ${COMPILE_TIMESTAMP} display_config
 	arduino-cli upload -p ${PORT} --fqbn ${FQBN} ${CURDIR} --input-dir ${BUILD_PATH}
 
 ${COMPILE_TIMESTAMP} : ${SKETCH_FILE_NAME}
