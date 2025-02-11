@@ -22,13 +22,13 @@ MONITOR_BAUD_RATE = 115200
 endif
 
 compile : ${COMPILE_TIMESTAMP}
-	arduino-cli compile ${SKETCH_FILE_NAME} --fqbn ${FQBN} --build-path ${BUILD_PATH} -v
-	touch ${COMPILE_TIMESTAMP}
 
 upload : ${COMPILE_TIMESTAMP}
 	arduino-cli upload -p ${PORT} --fqbn ${FQBN} ${CURDIR} --input-dir ${BUILD_PATH}
 
 ${COMPILE_TIMESTAMP} : ${SKETCH_FILE_NAME}
+	arduino-cli compile --fqbn ${FQBN} --build-path "${BUILD_PATH}" ${SKETCH_FILE_NAME} -v
+	touch ${COMPILE_TIMESTAMP}
 
 monitor:
 	screen ${PORT} ${MONITOR_BAUD_RATE}
