@@ -1,11 +1,17 @@
 FQBN := espressif:esp32:esp32da
 # TODO: change this for other OS users
-PORT := $(shell ls /dev/cu.usb* | head -n 1)
 SKETCH_FOLDER_NAME ?= ${CURDIR} # the folder where your sketch is located, defaults to the current directory
 SKETCH_FILE_NAME := $(CURDIR)/${SKETCH_FOLDER_NAME}/${SKETCH_FOLDER_NAME}.ino # the .ino file that matches the folder name
 MONITOR_BAUD_RATE := $(shell sed -nE 's/.*Serial.begin\(([0-9]+)\).*/\1/p' ${SKETCH_FILE_NAME})
 BUILD_PATH := ${SKETCH_FOLDER_NAME}/build
 COMPILE_TIMESTAMP := ${BUILD_PATH}/.timestamp # use a timestamp folder to prevent re-compilation
+
+# change the port name based on what the OS is
+ifeq ($(OS),Windows_NT) 
+ PORT := $(shell ls /dev/ttyS* | head -n 1)
+else
+ PORT := $(shell ls /dev/cu.usb* | head -n 1)
+endif
 
 # do some checks to make sure everything you want exists
 ifndef PORT
