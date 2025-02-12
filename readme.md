@@ -1,6 +1,6 @@
 # Please give us faster Arduino compile times
 
-I feel like too much time is spent waiting for the progress bar on the Arduino IDE to move during the compile & upload stage, so I tried making this template file
+I feel like too much time is spent waiting for the progress bar on the Arduino IDE to move during the compile & upload stage, so I tried making this template file.
 Why spend time waiting for a sketch to compile when you can spend even more time trying to optimize the sketch compilation and upload process?
 
 As an added bonus, your sketch will only be re-compiled when its contents have changed, rather than everytime you want to upload a sketch
