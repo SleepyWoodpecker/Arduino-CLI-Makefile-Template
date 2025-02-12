@@ -2,7 +2,7 @@
 
 # check that the user has specified a file name
 if [ $# -ne 1 ]; then
-  echo "ERROR: No .ino file for compilation specified"
+  echo "ERROR: Please provide folder where sketch belongs to"
   exit 1
 fi
 
@@ -12,14 +12,14 @@ if ! eval "arduino-cli" >/dev/null 2>&1; then
   exit 2
 fi
 
-# run make with the specified file name
-make SKETCH_FILE_NAME="$1"
+# run make with the specified folder name
+make SKETCH_FOLDER_NAME="$1"
 
 echo ""
 echo "--------------- Finished compilation ---------------"
 echo ""
 
-make upload SKETCH_FILE_NAME="$1"
+make upload SKETCH_FOLDER_NAME="$1"
 
 echo ""
 echo "----------------- Finished upload -----------------"
