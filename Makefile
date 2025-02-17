@@ -41,7 +41,7 @@ ${COMPILE_TIMESTAMP} : ${SKETCH_FILE_NAME}
 	touch ${COMPILE_TIMESTAMP}
 
 monitor:
-	screen ${PORT} ${MONITOR_BAUD_RATE}
+	arduino-cli monitor -p ${PORT} -b ${FQBN}
 
 display_config:
 	@echo "BOARD: ${FQBN}"
@@ -53,4 +53,3 @@ display_config:
 	@echo ""
 	@echo "---------------------------------------"
 	@echo ""
-
