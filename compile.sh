@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 # check that the user has specified a file name
 if [ $# -ne 1 ]; then
